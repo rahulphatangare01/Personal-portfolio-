@@ -80,7 +80,7 @@ order: 1;
 
 `
 
-const HeroRightContiner = styled.div`
+const HeroRightContainer = styled.div`
 width: 100%;
 order: 2;
 display: flex;
@@ -144,7 +144,7 @@ const Span = styled.div`
 color: ${({theme}) => theme.primary};
 cursor: pointer;
 `
-const Subtitle = styled.div`
+const SubTitle = styled.div`
 font-size: 20px;
 color: ${({theme}) => theme.text_primary+95};
 line-height: 32px;
@@ -196,7 +196,7 @@ filter: brightness(1);
 
 `
 
-const Image = styled.img`
+const Img = styled.img`
 
 width: 100%;
 height:100%;
@@ -224,37 +224,70 @@ max-width: 400px;
 
 function HeroSection() {
   return (
-    <div id='about'>
-      <HeroContainer>
-        <HeroBg> <HeroBgAnimation/> </HeroBg>
-        <HeroInnerContainer>
-          <HeroLeftContainer>
-            <Title> Hi, I am <br/>
-            {Bio.name}
-              </Title>
-              <TextLoop>
-                I am a 
-                <Span>
-                  <Typewriter 
-                  options={{
-                    strings: Bio.roles,
-                    autoStart: true,
-                    loop: true,
-                  }}
-                  />
-                </Span>
-              </TextLoop>
-              <Subtitle> {Bio.description} </Subtitle>
-              <ResumeButton href={Bio.resume} target='_blank'> Check Resume </ResumeButton>
-          </HeroLeftContainer>
-          <HeroRightContiner>
-            <Image  src={HeroImg}  alt= 'Hero' />
-          </HeroRightContiner>
-        </HeroInnerContainer>
-      </HeroContainer>
+    // <div id='about'>
+    //   <HeroContainer>
+    //     <HeroBg> <HeroBgAnimation/> </HeroBg>
+    //     <HeroInnerContainer>
+    //       <HeroLeftContainer>
+    //         <Title> Hi, I am <br/>
+    //         {Bio.name}
+    //           </Title>
+    //           <TextLoop>
+    //             I am a 
+    //             <Span>
+    //               <Typewriter 
+    //               options={{
+    //                 strings: Bio.roles,
+    //                 autoStart: true,
+    //                 loop: true,
+    //               }}
+    //               />
+    //             </Span>
+    //           </TextLoop>
+    //           <Subtitle> {Bio.description} </Subtitle>
+    //           <ResumeButton href={Bio.resume} target='_blank'> Check Resume </ResumeButton>
+    //       </HeroLeftContainer>
+    //       <HeroRightContiner>
+    //         <Image  src={HeroImg}  alt= 'Hero' />
+    //       </HeroRightContiner>
+    //     </HeroInnerContainer>
+    //   </HeroContainer>
 
       
-    </div>
+    // </div>
+
+    <div id="about">
+    <HeroContainer>
+        <HeroBg>
+            <HeroBgAnimation />
+        </HeroBg>
+        <HeroInnerContainer >
+            <HeroLeftContainer id="Left">
+                <Title>Hi, I am <br /> {Bio.name}</Title>
+                <TextLoop>
+                    I am a
+                    <Span>
+                        <Typewriter
+                            options={{
+                                strings: Bio.roles,
+                                autoStart: true,
+                                loop: true,
+                            }}
+                        />
+                    </Span>
+                </TextLoop>
+                <SubTitle>{Bio.description}</SubTitle>
+                <ResumeButton href={Bio.resume} target='display'>Check Resume</ResumeButton>
+            </HeroLeftContainer>
+
+            <HeroRightContainer id="Right">
+
+                <Img src={HeroImg} alt="hero-image" />
+            </HeroRightContainer>
+        </HeroInnerContainer>
+
+    </HeroContainer>
+</div>
   )
 }
 
