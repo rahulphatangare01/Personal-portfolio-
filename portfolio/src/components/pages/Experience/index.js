@@ -7,6 +7,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot';
 import {experiences} from '../../../data/constants/constants';
+import ExperienceCard from '../../Cards/ExperienceCard';
 
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ justify-content: center;
 position: relative;
 z-index: 1;
 align-items: center; 
+padding: 50px 0px;
 `
 
 const Wrapper = styled.div`
@@ -85,7 +87,9 @@ function Experience() {
                                     <TimelineDot  variant='outlined' color='secondary'  />
                                     {index !== experience.length -1 &&  <TimelineConnector/>  }
                                 </TimelineSeparator>
-                                <TimelineContent   sx={{ py:'12px', px:2}}  >Hello </TimelineContent>
+                                <TimelineContent   sx={{ py:'12px', px:2}}  >
+                                    <ExperienceCard  experience={experience}  />
+                                     </TimelineContent>
                             </TimelineItem>
                         ))}
                     </Timeline>
