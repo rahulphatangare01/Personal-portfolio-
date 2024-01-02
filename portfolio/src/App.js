@@ -7,6 +7,7 @@ import Navbar from './components/pages/Navbar';
 import Education from './components/pages/Education';
 import Experience from './components/pages/Experience';
 import { BrowserRouter as Router} from 'react-router-dom'
+import Projects from './components/pages/Projects';
 
 const Body  = styled.div`
 background-color:${({theme})=>theme.bg};
@@ -44,8 +45,9 @@ function App() {
       <Wrapper>
       <Skills/>
       <Experience/>
-      <Education/>
+      {/* <Education/> */}
       </Wrapper>
+      <Projects/>
      </Body>
     </Router>
     </ThemeProvider>
