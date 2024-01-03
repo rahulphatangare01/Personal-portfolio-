@@ -100,6 +100,16 @@ aligh-items: center;
 padding-left: 10px;
 `;
 
+const Avatar = styled.img`
+width: 38px;
+height: 38px;
+border-radius: 50%;
+margin-left: -10px;
+background-color: ${({theme})=> theme.white};
+box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+
+
+`
 
 const  ProjectCard = ( {project} ) => {
   return (
@@ -115,7 +125,11 @@ const  ProjectCard = ( {project} ) => {
             <Date> {project.date} </Date>
             <Description> {project.description} </Description>
         </Details>
-        <Members></Members>
+        <Members>
+        {project.member?.map((member) => (
+                    <Avatar src={member.img}/>
+                ))}
+        </Members>
     </Card>
   )
 }
