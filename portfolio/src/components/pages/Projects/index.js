@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -68,7 +68,7 @@ padding: 8px 18px;
 cursor:pointer;
 border-radius: 6px;
 
-${({active}) => active &&  ` background-color: ${({theme})=> theme.primary + 20};` }
+${({active, theme}) => active &&  ` background-color: ${theme.primary + 20};` }
 
 &:hover{
     background-color: ${({theme})=> theme.primary + 8}
@@ -86,6 +86,8 @@ width:1.5px;
 background-color: ${({theme})=> theme.primary}
 `
 function Projects() {
+
+    const [toggle, setToggle] = useState('all');
   return (
 
     <Container id='projects'>
@@ -97,14 +99,39 @@ function Projects() {
       </Desc>
     </Wrapper>
     <ToggleGroup>
-        <ToggleButton>ALL</ToggleButton>
+        {toggle === 'all' ? (
+
+            <ToggleButton  active value='all' onClick={()=> setToggle('all')}  >ALL</ToggleButton>
+        ) :(
+            <ToggleButton  value='all' onClick={()=> setToggle('all')}  >ALL</ToggleButton>
+
+        ) }
         <Divider/>
-        <ToggleButton>WEB APP'S</ToggleButton>
+        {
+            toggle === 'web app' ? (
+        <ToggleButton  active  value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
+
+            ) : 
+
+        <ToggleButton  value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
+        }
         <Divider/>
-        <ToggleButton>ANDROID APP'S</ToggleButton>
+        {
+            toggle === 'android app' ? (
+        <ToggleButton  active value= 'android app'  onClick={()=> setToggle('android app') } >ANDROID APP'S</ToggleButton>
+
+            ) : 
+
+        <ToggleButton  value = 'android app' onClick={()=> setToggle('android app')} >ANDROID APP'S</ToggleButton>
+        }
         <Divider/>
-        <ToggleButton>MACHINE LEARNING</ToggleButton>
-        
+        {
+            toggle === 'machine learning' ? (
+        <ToggleButton  active value='machine learning'  onClick={()=> setToggle('machine learning')} >MACHINE LEARNING</ToggleButton>
+
+            ) : 
+        <ToggleButton value= 'machine learning' onClick={()=> setToggle('machine learning') }  >MACHINE LEARNING</ToggleButton>
+        }
         
     </ToggleGroup>
     </Container>
