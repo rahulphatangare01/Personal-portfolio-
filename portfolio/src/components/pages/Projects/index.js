@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import ProjectCard from '../../Cards/ProjectCard';
+import {projects} from '../../../data/constants/constants'
 
 const Container = styled.div`
 
@@ -85,6 +87,19 @@ const Divider = styled.div`
 width:1.5px;
 background-color: ${({theme})=> theme.primary}
 `
+
+
+const CardContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 28px;
+
+`
+
+
+
 function Projects() {
 
     const [toggle, setToggle] = useState('all');
@@ -97,7 +112,6 @@ function Projects() {
             I have worked on a wide range of projects. From web apps to android apps.
             Here are my some projects.
       </Desc>
-    </Wrapper>
     <ToggleGroup>
         {toggle === 'all' ? (
 
@@ -105,7 +119,7 @@ function Projects() {
         ) :(
             <ToggleButton  value='all' onClick={()=> setToggle('all')}  >ALL</ToggleButton>
 
-        ) }
+            ) }
         <Divider/>
         {
             toggle === 'web app' ? (
@@ -113,27 +127,38 @@ function Projects() {
 
             ) : 
 
-        <ToggleButton  value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
+            <ToggleButton  value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
         }
         <Divider/>
         {
             toggle === 'android app' ? (
-        <ToggleButton  active value= 'android app'  onClick={()=> setToggle('android app') } >ANDROID APP'S</ToggleButton>
+                <ToggleButton  active value= 'android app'  onClick={()=> setToggle('android app') } >ANDROID APP'S</ToggleButton>
 
             ) : 
-
-        <ToggleButton  value = 'android app' onClick={()=> setToggle('android app')} >ANDROID APP'S</ToggleButton>
+            
+            <ToggleButton  value = 'android app' onClick={()=> setToggle('android app')} >ANDROID APP'S</ToggleButton>
         }
         <Divider/>
         {
             toggle === 'machine learning' ? (
-        <ToggleButton  active value='machine learning'  onClick={()=> setToggle('machine learning')} >MACHINE LEARNING</ToggleButton>
-
-            ) : 
-        <ToggleButton value= 'machine learning' onClick={()=> setToggle('machine learning') }  >MACHINE LEARNING</ToggleButton>
-        }
+                <ToggleButton  active value='machine learning'  onClick={()=> setToggle('machine learning')} >MACHINE LEARNING</ToggleButton>
+                
+                ) : 
+                <ToggleButton value= 'machine learning' onClick={()=> setToggle('machine learning') }  >MACHINE LEARNING</ToggleButton>
+            }
         
     </ToggleGroup>
+    <CardContainer>
+        
+       { toggle === 'all' &&  projects.map((project) =>  <ProjectCard  project={project} />  )}
+       {projects.filter((item)=> item.category === toggle)
+       .map((project)=> (
+        <ProjectCard  project={project} />
+       ))}
+    </CardContainer>
+
+            </Wrapper>
+
     </Container>
 
   )
