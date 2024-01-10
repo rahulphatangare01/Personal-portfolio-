@@ -131,8 +131,9 @@ function Skills() {
             past 2 years.
           </Desc>
           <SkillsContainer>
-            {skills.map((item) => (
-              <Skill>
+            {skills.map((item, id) => (
+              <Skill key={id}>
+
                 <SkillTitle> {item.title} </SkillTitle>
                 <SkillList>
                   {item.skills.map((skill) => (
