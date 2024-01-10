@@ -131,10 +131,16 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+console.log(process.env)
+    // const serviceId = "service_z8lz64p";
+    // const templateId = "template_ck9igge";
+    // const publicKey = "4EKRa9xXppMHIGhEz";
+    const serviceId = process.env.REACT_APP_SERVICE_ID;
+    const templateId = process.env.REACT_APP_TEMPLATE_ID;
+     const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
-    const serviceId = "";
-    const templateId = "";
-    const publicKey = "";
+
+
 
     const templateParams = {
       from_name: name,

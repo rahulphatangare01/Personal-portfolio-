@@ -10,13 +10,13 @@ import { BrowserRouter as Router} from 'react-router-dom'
 import Projects from './components/pages/Projects';
 import Contact from './components/pages/Contact';
 import Footer from './components/pages/Footer';
-
 const Body  = styled.div`
 background-color:${({theme})=>theme.bg};
 width:100%;
 height:100%;
 overflow-x:hidden;
 `;
+
 
 const Wrapper = styled.div`
 background:linear-gradient(
