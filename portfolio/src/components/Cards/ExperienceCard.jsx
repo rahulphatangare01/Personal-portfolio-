@@ -164,8 +164,8 @@ function ExperienceCard({experience}) {
                 <Skills>
                     <b>Skills:</b>
                     <ItemWrapper>
-                        {experience.skills.map((skill)=> (
-                            <Skill> {skill} </Skill>
+                        {experience.skills.map((skill, index)=> (
+                            <Skill key={index} > {skill} </Skill>
                         ))}
                     </ItemWrapper>
                 </Skills>

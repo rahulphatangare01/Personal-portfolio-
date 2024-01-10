@@ -83,11 +83,11 @@ function Education() {
         <Desc>My education has been a journey of self-discovery and growth. My educational details are as follows. </Desc>
         <TimeLineSection>
             <Timeline>
-                {education.map((education ,index) => (
-                    <TimelineItem> 
+                {education.map((education, index) => (
+                    <TimelineItem key={index}> 
                       
                         <TimelineContent   sx={{ py:'12px', px:2}}  >
-                            <EducationCard  education={education}   />
+                            <EducationCard  key={index} education={education}   />
                              </TimelineContent>
                              <TimelineSeparator>
                             <TimelineDot  variant='outlined' color='secondary'  />

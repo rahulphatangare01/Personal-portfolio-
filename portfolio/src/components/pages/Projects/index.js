@@ -152,7 +152,7 @@ function Projects() {
     </ToggleGroup>
     <CardContainer>
         
-       { toggle === 'all' &&  projects.map((project) =>  <ProjectCard  project={project} />  )}
+       { toggle === 'all' &&  projects.map((project, index) =>  <ProjectCard  key={index}  project={project} />  )}
        {projects.filter((item)=> item.category === toggle)
        .map((project)=> (
         <ProjectCard  project={project} />

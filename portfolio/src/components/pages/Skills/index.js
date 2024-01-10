@@ -131,15 +131,15 @@ function Skills() {
             past 2 years.
           </Desc>
           <SkillsContainer>
-            {skills.map((item, id) => (
-              <Skill key={id}>
+            {skills.map((item, index) => (
+              <Skill key={index}>
 
                 <SkillTitle> {item.title} </SkillTitle>
                 <SkillList>
-                  {item.skills.map((skill) => (
-                    <SkillItem>
+                  {item.skills.map((skill, index) => (
+                    <SkillItem key={index}>
                       <SkillImage src={skill.image} />
-                      {skill.name}
+                      {skill.name} 
                     </SkillItem>
                   ))}
                 </SkillList>
