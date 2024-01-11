@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as Yup from 'yup';
 
 const Container = styled.div`
   display: flex;
@@ -129,39 +132,40 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    message: Yup.string().required('Message is required'),
+  });
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const serviceId = "service_z8lz64p";
-    // const templateId = "template_ck9igge";
-    // const publicKey = "4EKRa9xXppMHIGhEz";
-    const serviceId = process.env.REACT_APP_SERVICE_ID;
-    const templateId = process.env.REACT_APP_TEMPLATE_ID;
-     const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+    try {
+      await validationSchema.validate({ name, email, message }, { abortEarly: false });
 
+      const serviceId = process.env.REACT_APP_SERVICE_ID;
+      const templateId = process.env.REACT_APP_TEMPLATE_ID;
+      const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        to_name: 'Basic Coder',
+        message: message,
+      };
 
-
-    const templateParams = {
-      from_name: name,
-      from_email: email,
-      to_name: "Basic Coder",
-      message: message,
-    };
-
-    //  Send them email using EmailJs
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("Email  send successfully !");
-        setName("");
-        setEmail("");
-        setMessage("");
-      })
-      .catch((error) => {
-        console.log("Error sending email:", error);
-      });
+      // Send email using EmailJs
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      toast.success('Email sent successfully!', { position: toast.POSITION.TOP_RIGHT });
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      toast.error('Error submitting the form. Please check your inputs.', { position: toast.POSITION.TOP_RIGHT });
+    }
+    
   };
-
   
   return (
     <Container>
@@ -194,7 +198,9 @@ function Contact() {
           />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
+   
       </Wrapper>
+     
     </Container>
   );
 }
