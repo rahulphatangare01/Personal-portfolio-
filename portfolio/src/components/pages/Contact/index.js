@@ -131,7 +131,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-console.log(process.env)
     // const serviceId = "service_z8lz64p";
     // const templateId = "template_ck9igge";
     // const publicKey = "4EKRa9xXppMHIGhEz";

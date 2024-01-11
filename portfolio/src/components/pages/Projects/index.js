@@ -115,17 +115,20 @@ function Projects() {
             Here are my some projects.
       </Desc>
     <ToggleGroup>
-        {toggle === 'all' ? (
+            {toggle === 'all' ? (
+    <ToggleButton active= 'true' value='all' onClick={() => setToggle('all')}>
+        ALL
+    </ToggleButton>
+) : (
+    <ToggleButton value='all' onClick={() => setToggle('all')}>
+        ALL
+    </ToggleButton>
+)}
 
-            <ToggleButton  active value='all' onClick={()=> setToggle('all')}  >ALL</ToggleButton>
-        ) :(
-            <ToggleButton  value='all' onClick={()=> setToggle('all')}  >ALL</ToggleButton>
-
-            ) }
         <Divider/>
         {
             toggle === 'web app' ? (
-        <ToggleButton  active  value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
+        <ToggleButton  active= 'true' value='web app' onClick={()=> setToggle('web app')}  >WEB APP'S</ToggleButton>
 
             ) : 
 
@@ -134,7 +137,7 @@ function Projects() {
         <Divider/>
         {
             toggle === 'android app' ? (
-                <ToggleButton  active value= 'android app'  onClick={()=> setToggle('android app') } >ANDROID APP'S</ToggleButton>
+                <ToggleButton  active= 'true' value= 'android app'  onClick={()=> setToggle('android app') } >ANDROID APP'S</ToggleButton>
 
             ) : 
             
@@ -143,7 +146,7 @@ function Projects() {
         <Divider/>
         {
             toggle === 'machine learning' ? (
-                <ToggleButton  active value='machine learning'  onClick={()=> setToggle('machine learning')} >MACHINE LEARNING</ToggleButton>
+                <ToggleButton  active= 'true' value='machine learning'  onClick={()=> setToggle('machine learning')} >MACHINE LEARNING</ToggleButton>
                 
                 ) : 
                 <ToggleButton value= 'machine learning' onClick={()=> setToggle('machine learning') }  >MACHINE LEARNING</ToggleButton>

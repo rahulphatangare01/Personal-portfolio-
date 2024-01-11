@@ -36,8 +36,17 @@ background:linear-gradient(
 
 
 function App() {
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = { isDisabled: true };
+  const originalLog = console.log;
+
+console.log = function (...args) {
+  const message = args.join(' ');
+  if (!message.includes('Loaded new content')) {
+    originalLog.apply(console, args);
+  }
+};
   return (
-  
+
   <ThemeProvider theme={darkTheme}>
     <Router>
 
